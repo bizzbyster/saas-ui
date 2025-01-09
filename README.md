@@ -11,20 +11,31 @@ Before you begin, ensure you have the following installed:
 - Vercel CLI
 - Git
 
-## Local Development Setup
+## Initial Setup
 
 1. Clone the repository:
 ```bash
-git clone <your-repository-url>
-cd my-saas
+git clone https://github.com/bizzbyster/saas-ui.git
+cd saas-ui
 ```
 
-2. Install dependencies:
+2. Set up Git credentials (one-time setup):
+```bash
+git config --global credential.helper store
+```
+
+3. Configure GitHub authentication:
+   - When pushing to GitHub for the first time, you'll be prompted for credentials
+   - Username: your GitHub email (e.g., bizzbyster@gmail.com)
+   - Password: use a Personal Access Token (not your GitHub password)
+   - After entering once, credentials will be stored
+
+4. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+5. Set up environment variables:
 ```bash
 cp .env.example .env.local
 ```
@@ -41,31 +52,29 @@ NEXT_PUBLIC_GRAFANA_URL=https://your-workspace.grafana-workspace.region.amazonaw
 NEXT_PUBLIC_GRAFANA_ANONYMOUS_TOKEN=your-token
 ```
 
-4. Run the development server:
+## Local Development
+
+1. Run the development server:
 ```bash
 npm run dev
 ```
 
 The application will be available at `http://localhost:3000`.
 
-## Production Deployment
+2. Make changes and test locally
 
-### Automated Deployment
-
-This project is configured for automated deployment to Vercel. Every push to the main branch triggers a production deployment.
-
-1. Push changes to trigger deployment:
+3. Commit and push changes:
 ```bash
 git add .
 git commit -m "Your commit message"
 git push origin main
 ```
 
-2. The deployment process will:
-   - Run build checks
-   - Deploy to Vercel
-   - Update DNS if configured
-   - Provision SSL certificates
+## Production Deployment
+
+### Automated Deployment
+
+This project is configured for automated deployment to Vercel. Every push to the main branch triggers a production deployment.
 
 ### Manual Deployment
 
@@ -106,7 +115,7 @@ vercel domains inspect your-domain.com
 ## Project Structure
 
 ```
-my-saas/
+saas-ui/
 ├── app/                          # Next.js app directory
 │   ├── page.tsx                 # Landing page
 │   ├── layout.tsx              # Root layout
